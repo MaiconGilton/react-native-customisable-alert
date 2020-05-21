@@ -136,8 +136,8 @@ export default class CustomisableAlert extends Component {
                     style={{ ...styles.btn, ...btnStyle, ...btnLeftStyle }}
                     onPress={
                       type === 'warning'
-                        ? () => { onDismiss(); this.closeAlert() }
-                        : () => { onPress(); this.closeAlert() }
+                        ? () => { onDismiss && onDismiss(); this.closeAlert() }
+                        : () => { onPress && onPress(); this.closeAlert() }
                     }>
                     <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{btnLabel || (type === 'warning' ? defaultLeftBtnLabel : 'Ok')}</Text>
                   </TouchableOpacity>
