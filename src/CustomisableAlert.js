@@ -24,11 +24,15 @@ export default class CustomisableAlert extends Component {
     this.state = {
       visible: false,
       title: null,
+      btnLabel: null,
       message: null,
       customAlert: null,
-      alertType: this.props.defaultType,
+      alertType: null,
       onContinuePress: null,
-      customIcon: null
+      customIcon: null,
+      _dismissable: false,
+      _animationIn: null,
+      _animationOut: null,
     };
   }
 
@@ -40,14 +44,14 @@ export default class CustomisableAlert extends Component {
     AlertManager.unregister(this);
   }
 
-  showAlert = ({ customIcon, title, message, customAlert, alertType, onContinuePress }) => {
+  showAlert = ({
+    customIcon, title, message, customAlert,
+    alertType, onContinuePress, dismissable,
+    animationIn, animationOut, btnLabel } = {}) => {
     this.setState({
-      title: title || this.props.defaultTitle,
-      message,
-      customAlert,
-      alertType,
-      onContinuePress,
-      customIcon
+      title, message, customAlert, alertType, btnLabel,
+      onContinuePress, customIcon, _dismissable: dismissable,
+      _animationIn: animationIn, _animationOut: animationOut,
     }, () => this.setState({ visible: true }));
   }
 
@@ -57,78 +61,80 @@ export default class CustomisableAlert extends Component {
 
   render() {
     const {
-      containerStyle,
-      defaultType,
-      animationIn,
-      animationOut,
-      textStyle,
-      titleStyle,
-      btnStyle,
-      btnLeftStyle,
-      btnRightStyle,
-      defaultLeftBtnLabel,
-      defaultRightBtnLabel,
-      btnLabelStyle,
-      btnLeftLabelStyle,
-      btnRightLabelStyle
+      containerStyle, defaultType = 'error', animationIn,
+      animationOut, textStyle, titleStyle, defaultTitle = 'Title',
+      btnStyle, btnLeftStyle, btnRightStyle,
+      defaultLeftBtnLabel = 'Cancel', defaultRightBtnLabel = 'Ok',
+      btnLabelStyle, btnLeftLabelStyle,
+      btnRightLabelStyle, dismissable = false
     } = this.props;
-    const { customIcon, title, message, onContinuePress, visible, customAlert, alertType } = this.state;
+
+    const {
+      customIcon, title, message,
+      onContinuePress, visible, customAlert,
+      alertType, _dismissable,
+      _animationIn, _animationOut, btnLabel
+    } = this.state;
+
     const type = alertType || defaultType
+    const ___title = title || defaultTitle
+    const ___dismissable = _dismissable || dismissable
+    const ___animationIne = _animationIn || animationIn
+    const ___animationOut = _animationOut || animationOut
 
     return (
       <Modal
-        animationIn={animationIn}
-        animationOut={animationOut}
+        animationIn={___animationIne}
+        animationOut={___animationOut}
         isVisible={visible}
         useNativeDriver
+        supportedOrientations={['landscape', 'portrait']}
         deviceHeight={10000}
         style={{ margin: 0 }}
+        onBackdropPress={() => ___dismissable ? this.closeAlert() : {}}
       >
         <View style={{ ...styles.container, ...containerStyle }}>
 
-          <View style={styles.content}>
+          {
+            type === 'custom' ? (customAlert || <Text onPress={() => this.setState({ visible: false })}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
 
-            {
-              type === 'custom' ? (customAlert || <Text onPress={() => this.setState({ visible: false })}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
-                <>
-                  <View style={styles.img_container}>
-                    {customIcon ||
-                      <Image
-                        source={
-                          type === 'success'
-                            ? require('./icons/success.png')
-                            : type === 'warning'
-                              ? require('./icons/warning.png')
-                              : require('./icons/error.png')
-                        }
-                        style={styles.img}
-                      />
-                    }
-                  </View>
+              <View style={styles.content}>
+                <View style={styles.img_container}>
+                  {customIcon ||
+                    <Image
+                      source={
+                        type === 'success'
+                          ? require('./icons/success.png')
+                          : type === 'warning'
+                            ? require('./icons/warning.png')
+                            : require('./icons/error.png')
+                      }
+                      style={styles.img}
+                    />
+                  }
+                </View>
 
-                  <Text style={{ ...styles.title, ...titleStyle }}>{title}</Text>
+                <Text style={{ ...styles.title, ...titleStyle }}>{___title}</Text>
 
-                  {!!message && <Text style={{ ...styles.text, ...textStyle }}>{message}</Text>}
+                {!!message && <Text style={{ ...styles.text, ...textStyle }}>{message}</Text>}
 
-                  <View style={styles.actions}>
-                    <TouchableOpacity onPress={this.closeAlert}
-                      style={{ ...styles.btn, ...btnStyle, ...btnLeftStyle }}>
-                      <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{defaultLeftBtnLabel}</Text>
+                <View style={styles.actions}>
+                  <TouchableOpacity onPress={this.closeAlert}
+                    style={{ ...styles.btn, ...btnStyle, ...btnLeftStyle }}>
+                    <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{btnLabel || (type === 'warning' ? defaultLeftBtnLabel : 'Ok')}</Text>
+                  </TouchableOpacity>
+
+                  {
+                    type === 'warning' &&
+                    <TouchableOpacity
+                      onPress={async () => { onContinuePress(); this.setState({ visible: false }) }}
+                      style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
+                      <Text style={{ ...btnLabelStyle, ...btnRightLabelStyle }}>{defaultRightBtnLabel}</Text>
                     </TouchableOpacity>
-
-                    {
-                      type === 'warning' &&
-                      <TouchableOpacity
-                        onPress={async () => { onContinuePress(); this.setState({ visible: false }) }}
-                        style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
-                        <Text style={{ ...btnLabelStyle, ...btnRightLabelStyle }}>{defaultRightBtnLabel}</Text>
-                      </TouchableOpacity>
-                    }
-                  </View>
-                </>
-            }
-
-          </View>
+                  }
+                </View>
+              </View>
+          }
 
         </View>
       </Modal>

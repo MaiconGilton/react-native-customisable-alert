@@ -27,6 +27,10 @@ export interface CustomisableAlertOptions {
    */
   message?: string;
   /**
+   * Button label for the one button alert (case alertType = "error" | "success"), default='Ok'
+   */
+  btnLabel?: string;
+  /**
    * Define a custom alert (this replace the whole thing!)
    */
   customAlert?: React.ReactNode;
@@ -38,6 +42,18 @@ export interface CustomisableAlertOptions {
    * Trigger action on right button pressed(only of AlertType='warning')
    */
   onContinuePress?(): void;
+  /**
+   * Overhides global dismissable behavior. If true it closes the alert when touch outside, default=false
+   */
+  dismissable?: boolean;
+  /**
+   * Overhides global animation for an entrance animation
+   */
+  animationIn?: Animation;
+  /**
+   * Overhides global animation for an exit animation
+   */
+  animationOut?: Animation;
 }
 
 export interface CustomisableAlertProps {
@@ -101,6 +117,10 @@ export interface CustomisableAlertProps {
    * Set a default exit animation for your alert
    */
   animationOut?: Animation;
+  /**
+   * If true alert auto dismiss when touch outside, default false
+   */
+  dismissable?: boolean;
 }
 
 /**
