@@ -17,7 +17,7 @@ export interface CustomisableAlertOptions {
   /**
    * Set a custom icon for your alert
    */
-  customIcon?: React.ReactNode;
+  customIcon?: React.Component;
   /**
    * The title of your alert
    */
@@ -33,7 +33,7 @@ export interface CustomisableAlertOptions {
   /**
    * Define a custom alert (this replace the whole thing!)
    */
-  customAlert?: React.ReactNode;
+  customAlert?: React.Component;
   /**
    * Define the type of the alert
    */
@@ -41,7 +41,7 @@ export interface CustomisableAlertOptions {
   /**
    * Trigger action on right button pressed(only of AlertType='warning')
    */
-  onContinuePress?(): void;
+  onContinuePress?(): Promise<any> | void;
   /**
    * Overhides global dismissable behavior. If true it closes the alert when touch outside, default=false
    */
@@ -121,6 +121,18 @@ export interface CustomisableAlertProps {
    * If true alert auto dismiss when touch outside, default false
    */
   dismissable?: boolean;
+  /**
+   * Set a default icon for you warning messages
+   */
+  defaultWarningIcon?: React.Component;
+  /**
+   * Set a default icon for you success messages
+   */
+  defaultSuccessIcon?: React.Component;
+  /**
+   * Set a default icon for you error messages
+   */
+  defaultErrorIcon?: React.Component;
 }
 
 /**
@@ -136,7 +148,11 @@ export function showAlert({
   message,
   customAlert,
   alertType,
-  onContinuePress
+  onContinuePress,
+  dismissable,
+  animationIn,
+  animationOut,
+  btnLabel
 }: CustomisableAlertOptions): void;
 
 /**

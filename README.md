@@ -100,15 +100,15 @@ When you call `showAlert` you should pass some attributes to customize your aler
 | title           | `string`                                  | The title of your alert                                                                              |
 | message         | `string`                                  | The message of your alert                                                                            |
 | btnLabel        | `string`                                  | Button label for the one button alert ("error" or "success" alertTypes), default=`'Ok'`              |
-| customAlert     | `React.ReactNode`                         | Define a custom alert (this will replace the whole thing!)                                           |
-| customIcon      | `React.ReactNode`                         | Set a custom icon for your alert                                                                     |
+| customAlert     | `React.Component`                         | Define a custom alert (this will replace the whole thing!)                                           |
+| customIcon      | `React.Component`                         | Set a custom icon for your alert                                                                     |
 | alertType       | `"error", "success", "warning", "custom"` | Define the type of the alert                                                                         |
-| onContinuePress | `(): void`                                | Trigger action on right button pressed(only 'warning' alerts)                                        |
+| onContinuePress | `(): void / Promise<any>`                 | Trigger action on right button pressed(only 'warning' alerts)                                        |
 | animationIn     | `Animation`                               | Overhides global animation for an entrance animation                                                 |
 | animationOut    | `Animation`                               | Overhides global animation for an exit animation                                                     |
 | dismissable     | `boolean`                                 | Overhides global dismissable behavior. If true it closes the alert when touch outside, default false |
 
-All alerts are set to close automatically when any button pressed, but for custom alertTypes you need close it programatically with the following:
+All alerts are set to close automatically when any button pressed, but for custom and warning alertTypes you need close it programatically as the example below:
 
 ```jsx
 import React from "react";
@@ -164,6 +164,9 @@ You can set a default style for all your alerts with the following:
 | animationIn          | `Animation`                          | Set a default entrance animation for your alert                |
 | animationOut         | `Animation`                          | Set a default exit animation for your alert                    |
 | dismissable          | `boolean`                            | If true alert auto dismiss when touch outside, default=`false` |
+| defaultWarningIcon   | `React.Component`                    | Set a default icon for you warning messages                    |
+| defaultSuccessIcon   | `React.Component`                    | Set a default icon for you success messages                    |
+| defaultErrorIcon     | `React.Component`                    | Set a default icon for you error messages                      |
 
 ## License
 

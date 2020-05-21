@@ -44,7 +44,7 @@ export default class CustomisableAlert extends Component {
     AlertManager.unregister(this);
   }
 
-  showAlert = ({
+  showAlert = () => ({
     customIcon, title, message, customAlert,
     alertType, onContinuePress, dismissable,
     animationIn, animationOut, btnLabel } = {}) => {
@@ -65,8 +65,8 @@ export default class CustomisableAlert extends Component {
       animationOut, textStyle, titleStyle, defaultTitle = 'Title',
       btnStyle, btnLeftStyle, btnRightStyle,
       defaultLeftBtnLabel = 'Cancel', defaultRightBtnLabel = 'Ok',
-      btnLabelStyle, btnLeftLabelStyle,
-      btnRightLabelStyle, dismissable = false
+      btnLabelStyle, btnLeftLabelStyle, defaultWarningIcon, defaultSuccessIcon,
+      defaultErrorIcon, btnRightLabelStyle, dismissable = false
     } = this.props;
 
     const {
@@ -75,6 +75,29 @@ export default class CustomisableAlert extends Component {
       alertType, _dismissable,
       _animationIn, _animationOut, btnLabel
     } = this.state;
+
+    function getImage() {
+      if (defaultWarningIcon) {
+        return defaultWarningIcon
+      } else if (defaultSuccessIcon) {
+        return defaultSuccessIcon
+      } else if (defaultErrorIcon) {
+        return defaultErrorIcon
+      } else if (customIcon) {
+        return customIcon
+      } else {
+        return <Image
+          source={
+            type === 'success'
+              ? require('./icons/success.png')
+              : type === 'warning'
+                ? require('./icons/warning.png')
+                : require('./icons/error.png')
+          }
+          style={styles.img}
+        />
+      }
+    }
 
     const type = alertType || defaultType
     const ___title = title || defaultTitle
@@ -96,22 +119,11 @@ export default class CustomisableAlert extends Component {
         <View style={{ ...styles.container, ...containerStyle }}>
 
           {
-            type === 'custom' ? (customAlert || <Text onPress={() => this.setState({ visible: false })}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
+            type === 'custom' ? (customAlert || <Text onPress={this.closeAlert}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
 
               <View style={styles.content}>
                 <View style={styles.img_container}>
-                  {customIcon ||
-                    <Image
-                      source={
-                        type === 'success'
-                          ? require('./icons/success.png')
-                          : type === 'warning'
-                            ? require('./icons/warning.png')
-                            : require('./icons/error.png')
-                      }
-                      style={styles.img}
-                    />
-                  }
+                  {getImage()}
                 </View>
 
                 <Text style={{ ...styles.title, ...titleStyle }}>{___title}</Text>
@@ -127,7 +139,7 @@ export default class CustomisableAlert extends Component {
                   {
                     type === 'warning' &&
                     <TouchableOpacity
-                      onPress={async () => { onContinuePress(); this.setState({ visible: false }) }}
+                      onPress={onContinuePress}
                       style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
                       <Text style={{ ...btnLabelStyle, ...btnRightLabelStyle }}>{defaultRightBtnLabel}</Text>
                     </TouchableOpacity>
