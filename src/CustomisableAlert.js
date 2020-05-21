@@ -44,7 +44,7 @@ export default class CustomisableAlert extends Component {
     AlertManager.unregister(this);
   }
 
-  showAlert = () => ({
+  showAlert = ({
     customIcon, title, message, customAlert,
     alertType, onContinuePress, dismissable,
     animationIn, animationOut, btnLabel } = {}) => {
