@@ -1,12 +1,9 @@
 {
   "name": "react-native-customisable-alert",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "React Native customisable alert utility",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "scripts": {
-    "upd": "yarn upgrade-interactive --latest"
-  },
   "repository": "https://github.com/MaiconGilton/react-native-customisable-alert.git",
   "keywords": [
     "react",
@@ -35,7 +32,6 @@
     "react-native-modal": "^11.3.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2",
     "react": "16.8.3",
     "react-native": "0.59.8"
   }
