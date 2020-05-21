@@ -1,6 +1,6 @@
 {
   "name": "react-native-customisable-alert",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "description": "React Native customisable alert utility",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -11,9 +11,9 @@
     "react-component",
     "native",
     "component",
-    "flashmessage",
     "message",
     "alert",
+    "popup",
     "notification",
     "android",
     "utility"
