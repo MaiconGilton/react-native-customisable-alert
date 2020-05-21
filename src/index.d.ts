@@ -39,9 +39,13 @@ export interface CustomisableAlertOptions {
    */
   alertType?: AlertType;
   /**
-   * Trigger action on right button pressed(only of AlertType='warning')
+   * Button pressed callback (one button alerts or right button in a two buttons alerts)
    */
-  onContinuePress?(): Promise<any> | void;
+  onPress?(): void;
+  /**
+   * Close alert button callback (left button in a two buttons alerts)
+   */
+  onDismiss?(): void;
   /**
    * Overhides global dismissable behavior. If true it closes the alert when touch outside, default=false
    */

@@ -24,7 +24,7 @@ const App = () => {
           title: 'Are you sure?',
           message: 'This action will be irreversible!',
           alertType: 'warning',
-          onContinuePress: () => alert('Too late now!')
+          onPress: () => alert('Too late now!')
         })}
       />
 

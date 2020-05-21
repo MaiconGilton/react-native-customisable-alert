@@ -28,7 +28,8 @@ export default class CustomisableAlert extends Component {
       message: null,
       customAlert: null,
       alertType: null,
-      onContinuePress: null,
+      onPress: null,
+      onDismiss: null,
       customIcon: null,
       _dismissable: false,
       _animationIn: null,
@@ -46,11 +47,11 @@ export default class CustomisableAlert extends Component {
 
   showAlert = ({
     customIcon, title, message, customAlert,
-    alertType, onContinuePress, dismissable,
+    alertType, onPress, dismissable, onDismiss,
     animationIn, animationOut, btnLabel } = {}) => {
     this.setState({
       title, message, customAlert, alertType, btnLabel,
-      onContinuePress, customIcon, _dismissable: dismissable,
+      onPress, onDismiss, customIcon, _dismissable: dismissable,
       _animationIn: animationIn, _animationOut: animationOut,
     }, () => this.setState({ visible: true }));
   }
@@ -71,7 +72,7 @@ export default class CustomisableAlert extends Component {
 
     const {
       customIcon, title, message,
-      onContinuePress, visible, customAlert,
+      onPress, onDismiss, visible, customAlert,
       alertType, _dismissable,
       _animationIn, _animationOut, btnLabel
     } = this.state;
@@ -131,15 +132,20 @@ export default class CustomisableAlert extends Component {
                 {!!message && <Text style={{ ...styles.text, ...textStyle }}>{message}</Text>}
 
                 <View style={styles.actions}>
-                  <TouchableOpacity onPress={this.closeAlert}
-                    style={{ ...styles.btn, ...btnStyle, ...btnLeftStyle }}>
+                  <TouchableOpacity
+                    style={{ ...styles.btn, ...btnStyle, ...btnLeftStyle }}
+                    onPress={
+                      type === 'warning'
+                        ? () => { onDismiss(); this.closeAlert() }
+                        : () => { onPress(); this.closeAlert() }
+                    }>
                     <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{btnLabel || (type === 'warning' ? defaultLeftBtnLabel : 'Ok')}</Text>
                   </TouchableOpacity>
 
                   {
                     type === 'warning' &&
                     <TouchableOpacity
-                      onPress={onContinuePress}
+                      onPress={onPress}
                       style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
                       <Text style={{ ...btnLabelStyle, ...btnRightLabelStyle }}>{defaultRightBtnLabel}</Text>
                     </TouchableOpacity>

@@ -1,7 +1,7 @@
 ﻿<h1 align="center" style="text-align: center;">react-native-customisable-alert</h1>
 
 <p align="center" style="font-size: 1.2rem;">
-   This React Native simple library was built in top of react-native-modal to help you to easily customise your alerts. The catch of this library is that you can call it from anywhere in your code without extra components imports and variables to control it, which means a CLEANER CODE 😉!!!<br/><br />
+   This React Native simple library was built in top of react-native-modal to help you to easily customise your alerts. It works like a built in React Native Alert component but this is highly customisable. The catch of this library is that you can call it from anywhere in your code without extra components imports and variables to control it, which means a CLEANER CODE 😉!!!<br/><br />
   <img src="https://i.imgur.com/o9BIqvT.gif" alt="Demo of react-native-customisable-alert" width="50%" style="border: 0; width: 50%; min-width: 200px; max-width: 200px;" />
 </p>
 
@@ -83,7 +83,7 @@ class OtherScreen extends React.Component {
               title="Are you sure?"
               message: "All your files will be deleted!",
               alertType: 'warning',
-              onContinuePress: () => console.log('files deleted!'),
+              onPress: () => console.log('files deleted!'),
             });
           }}
         />
@@ -95,18 +95,19 @@ class OtherScreen extends React.Component {
 
 When you call `showAlert` you should pass some attributes to customize your alert:
 
-| Property        | Type                                      | Description                                                                                          |
-| --------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| title           | `string`                                  | The title of your alert                                                                              |
-| message         | `string`                                  | The message of your alert                                                                            |
-| btnLabel        | `string`                                  | Button label for the one button alert ("error" or "success" alertTypes), default=`'Ok'`              |
-| customAlert     | `React.Component`                         | Define a custom alert (this will replace the whole thing!)                                           |
-| customIcon      | `React.Component`                         | Set a custom icon for your alert                                                                     |
-| alertType       | `"error", "success", "warning", "custom"` | Define the type of the alert                                                                         |
-| onContinuePress | `(): void / Promise<any>`                 | Trigger action on right button pressed(only 'warning' alerts)                                        |
-| animationIn     | `Animation`                               | Overhides global animation for an entrance animation                                                 |
-| animationOut    | `Animation`                               | Overhides global animation for an exit animation                                                     |
-| dismissable     | `boolean`                                 | Overhides global dismissable behavior. If true it closes the alert when touch outside, default false |
+| Property     | Type                                      | Description                                                                                          |
+| ------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| title        | `string`                                  | The title of your alert                                                                              |
+| message      | `string`                                  | The message of your alert                                                                            |
+| btnLabel     | `string`                                  | Button label for the one button alert ("error" or "success" alertTypes), default=`'Ok'`              |
+| customAlert  | `React.Component`                         | Define a custom alert (this will replace the whole thing!)                                           |
+| customIcon   | `React.Component`                         | Set a custom icon for your alert                                                                     |
+| alertType    | `"error", "success", "warning", "custom"` | Define the type of the alert                                                                         |
+| onPress      | `(): void`                                | Button pressed callback (one button alerts or right button in a two buttons alerts)                  |
+| onDismiss    | `(): void`                                | Close alert button callback (left button in a two buttons alerts)                                    |
+| animationIn  | `Animation`                               | Overhides global animation for an entrance animation                                                 |
+| animationOut | `Animation`                               | Overhides global animation for an exit animation                                                     |
+| dismissable  | `boolean`                                 | Overhides global dismissable behavior. If true it closes the alert when touch outside, default false |
 
 All alerts are set to close automatically when any button pressed, but for custom and warning alertTypes you need close it programatically as the example below:
 
