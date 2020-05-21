@@ -1,0 +1,129 @@
+import * as React from "react";
+import {
+  Animated,
+  ImageProps,
+  ImageStyle,
+  StyleProp,
+  TextStyle,
+  TranslateYTransform,
+  ViewStyle,
+  TouchableOpacityProps
+} from "react-native";
+import { Animation } from "react-native-animatable";
+
+type AlertType = "error" | "success" | "warning" | "custom";
+
+export interface CustomisableAlertOptions {
+  /**
+   * Set a custom icon for your alert
+   */
+  customIcon?: React.ReactNode;
+  /**
+   * The title of your alert
+   */
+  title: string;
+  /**
+   * The message of your alert
+   */
+  message?: string;
+  /**
+   * Define a custom alert (this replace the whole thing!)
+   */
+  customAlert?: React.ReactNode;
+  /**
+   * Define the type of the alert
+   */
+  alertType?: AlertType;
+  /**
+   * Trigger action on right button pressed(only of AlertType='warning')
+   */
+  onContinuePress?(): void;
+}
+
+export interface CustomisableAlertProps {
+  /**
+   * Set a default title for all alerts you call
+   */
+  defaultTitle: string;
+  /**
+   * Style for the alert wrapper
+   */
+  containerStyle?: ViewStyle;
+  /**
+   * Style for the message of your alert
+   */
+  textStyle?: TextStyle;
+  /**
+   * Style for the title of your alert
+   */
+  titleStyle?: TextStyle;
+  /**
+   * Style for all buttons of your alert
+   */
+  btnStyle?: TouchableOpacityProps;
+  /**
+   * Style for the left button of your alert
+   */
+  btnLeftStyle?: TouchableOpacityProps;
+  /**
+   * Style for the right button of your alert
+   */
+  btnRightStyle?: TouchableOpacityProps;
+  /**
+   * Style for the label of the buttons of your alert
+   */
+  btnLabelStyle?: TextStyle;
+  /**
+   * Style for the left label button of your alert
+   */
+  btnLeftLabelStyle?: TextStyle;
+  /**
+   * Style for the right label button of your alert
+   */
+  btnRightLabelStyle?: TextStyle;
+  /**
+   * Set a default label for the left button of your alert
+   */
+  defaultLeftBtnLabel?: string;
+  /**
+   * Set a default label for the right button of your alert
+   */
+  defaultRightBtnLabel?: string;
+  /**
+   * Set a default type for your alert
+   */
+  defaultType?: AlertType;
+  /**
+   * Set a default entrance animation for your alert
+   */
+  animationIn?: Animation;
+  /**
+   * Set a default exit animation for your alert
+   */
+  animationOut?: Animation;
+}
+
+/**
+ * Function to show your customAlert, can be called anywhere in your code
+ *
+ * ```
+ *  showAlert({ title: "Your title", message: "Your message", alertType: "error", ...})
+ * ```
+ */
+export function showAlert({
+  customIcon,
+  title,
+  message,
+  customAlert,
+  alertType,
+  onContinuePress
+}: CustomisableAlertOptions): void;
+
+/**
+ * Function to close your customAlert, can be called anywhere in your code
+ */
+export function closeAlert(): void;
+
+export default class CustomisableAlert extends React.Component<
+  CustomisableAlertProps
+> {}
