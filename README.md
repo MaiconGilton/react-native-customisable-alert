@@ -95,18 +95,18 @@ class OtherScreen extends React.Component {
 
 When you call `showAlert` you should pass some attributes to customize your alert:
 
-| Property        | Type                                         | Description                                                                                          |
-| --------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| title           | `string`                                     | The title of your alert                                                                              |
-| message         | `string`                                     | The message of your alert                                                                            |
-| btnLabel        | `string`                                     | Button label for the one button alert (alertType = "error" or "success"), default=`'Ok'`             |
-| customAlert     | `React.ReactNode`                            | Define a custom alert (this will replace the whole thing!)                                           |
-| customIcon      | `React.ReactNode`                            | Set a custom icon for your alert                                                                     |
-| alertType       | `"error" | "success" | "warning" | "custom"` | Define the type of the alert                                                                         |
-| onContinuePress | `(): void`                                   | Trigger action on right button pressed(only of AlertType='warning')                                  |
-| animationIn     | `Animation`                                  | Overhides global animation for an entrance animation                                                 |
-| animationOut    | `Animation`                                  | Overhides global animation for an exit animation                                                     |
-| dismissable     | `boolean`                                    | Overhides global dismissable behavior. If true it closes the alert when touch outside, default false |
+| Property        | Type                                      | Description                                                                                          |
+| --------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| title           | `string`                                  | The title of your alert                                                                              |
+| message         | `string`                                  | The message of your alert                                                                            |
+| btnLabel        | `string`                                  | Button label for the one button alert (alertType = "error" or "success"), default=`'Ok'`             |
+| customAlert     | `React.ReactNode`                         | Define a custom alert (this will replace the whole thing!)                                           |
+| customIcon      | `React.ReactNode`                         | Set a custom icon for your alert                                                                     |
+| alertType       | `"error", "success", "warning", "custom"` | Define the type of the alert                                                                         |
+| onContinuePress | `(): void`                                | Trigger action on right button pressed(only of AlertType='warning')                                  |
+| animationIn     | `Animation`                               | Overhides global animation for an entrance animation                                                 |
+| animationOut    | `Animation`                               | Overhides global animation for an exit animation                                                     |
+| dismissable     | `boolean`                                 | Overhides global dismissable behavior. If true it closes the alert when touch outside, default false |
 
 All alerts are set to close automatically when any button pressed, but for custom alertTypes you need close it programatically with the following:
 
