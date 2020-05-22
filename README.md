@@ -101,7 +101,7 @@ When you call `showAlert` you should pass some attributes to customize your aler
 | message      | `string`                                  | The message of your alert                                                                            |
 | btnLabel     | `string`                                  | Button label for the one button alert ("error" or "success" alertTypes), default=`'Ok'`              |
 | customAlert  | `React.Component`                         | Define a custom alert (this will replace the whole thing!)                                           |
-| customIcon   | `React.Component`                         | Set a custom icon for your alert                                                                     |
+| customIcon   | `React.Component`                         | Set a custom icon for your alert. If you want no icon in your alert use customIcon:'none'            |
 | alertType    | `"error", "success", "warning", "custom"` | Define the type of the alert                                                                         |
 | onPress      | `(): void`                                | Button pressed callback (one button alerts or right button in a two buttons alerts)                  |
 | onDismiss    | `(): void`                                | Close alert button callback (left button in a two buttons alerts)                                    |

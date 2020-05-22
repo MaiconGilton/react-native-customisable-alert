@@ -15,7 +15,7 @@ type AlertType = "error" | "success" | "warning" | "custom";
 
 export interface CustomisableAlertOptions {
   /**
-   * Set a custom icon for your alert
+   * Set a custom icon for your alert. If you want no icon in your alert use customIcon:'none'
    */
   customIcon?: React.Component;
   /**
