@@ -78,14 +78,15 @@ export default class CustomisableAlert extends Component {
     } = this.state;
 
     function getImage() {
-      if (defaultWarningIcon) {
+      if (customIcon) {
+        if (customIcon === 'none') return null
+        return customIcon
+      } else if (defaultWarningIcon) {
         return defaultWarningIcon
       } else if (defaultSuccessIcon) {
         return defaultSuccessIcon
       } else if (defaultErrorIcon) {
         return defaultErrorIcon
-      } else if (customIcon) {
-        return customIcon
       } else {
         return <Image
           source={
