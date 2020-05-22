@@ -15,7 +15,9 @@ type AlertType = "error" | "success" | "warning" | "custom";
 
 export interface CustomisableAlertOptions {
   /**
-   * Set a custom icon for your alert. If you want no icon in your alert use customIcon:'none'
+   * Set a custom icon for your alert.
+   *
+   * If you want no icon in your alert use customIcon:`'none'`
    */
   customIcon?: React.Component;
   /**
@@ -27,9 +29,19 @@ export interface CustomisableAlertOptions {
    */
   message?: string;
   /**
-   * Button label for the one button alert (case alertType = "error" | "success"), default='Ok'
+   * Button label for one button alerts (`error` | `success` alertTypes)
+   *
+   * Right button label for two buttons alerts (`warning` alertTypes)
+   *
+   * Default=`'Ok'`
    */
   btnLabel?: string;
+  /**
+   * Left button label for two buttons alerts (`warning` alertTypes)
+   *
+   * Default=`'Cancel'`
+   */
+  leftBtnLabel?: string;
   /**
    * Define a custom alert (this replace the whole thing!)
    */
@@ -47,7 +59,11 @@ export interface CustomisableAlertOptions {
    */
   onDismiss?(): void;
   /**
-   * Overhides global dismissable behavior. If true it closes the alert when touch outside, default=false
+   * Overhides global dismissable behavior.
+   *
+   * If `true` it closes the alert when touch outside
+   *
+   * Default=`false`
    */
   dismissable?: boolean;
   /**
@@ -122,7 +138,9 @@ export interface CustomisableAlertProps {
    */
   animationOut?: Animation;
   /**
-   * If true alert auto dismiss when touch outside, default false
+   * If true alert auto dismiss when touch outside
+   *
+   * Default= `false`
    */
   dismissable?: boolean;
   /**
@@ -140,7 +158,7 @@ export interface CustomisableAlertProps {
 }
 
 /**
- * Function to show your customAlert, can be called anywhere in your code
+ * Show your customAlert, can be called anywhere in your code
  *
  * ```
  *  showAlert({ title: "Your title", message: "Your message", alertType: "error", ...})
@@ -152,15 +170,16 @@ export function showAlert({
   message,
   customAlert,
   alertType,
-  onContinuePress,
+  onPress,
   dismissable,
   animationIn,
   animationOut,
-  btnLabel
+  btnLabel,
+  leftBtnLabel
 }: CustomisableAlertOptions): void;
 
 /**
- * Function to close your customAlert, can be called anywhere in your code
+ * Close your customAlert, can be called anywhere in your code
  */
 export function closeAlert(): void;
 

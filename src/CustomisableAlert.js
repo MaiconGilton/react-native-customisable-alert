@@ -22,17 +22,10 @@ export default class CustomisableAlert extends Component {
     super(props);
 
     this.state = {
-      visible: false,
-      title: null,
-      btnLabel: null,
-      message: null,
-      customAlert: null,
-      alertType: null,
-      onPress: null,
-      onDismiss: null,
-      customIcon: null,
-      _dismissable: false,
-      _animationIn: null,
+      visible: false, title: null, btnLabel: null,
+      leftBtnLabel: null, message: null, customAlert: null,
+      alertType: null, onPress: null, onDismiss: null,
+      customIcon: null, _dismissable: false, _animationIn: null,
       _animationOut: null,
     };
   }
@@ -48,9 +41,9 @@ export default class CustomisableAlert extends Component {
   showAlert = ({
     customIcon, title, message, customAlert,
     alertType, onPress, dismissable, onDismiss,
-    animationIn, animationOut, btnLabel } = {}) => {
+    animationIn, animationOut, btnLabel, leftBtnLabel } = {}) => {
     this.setState({
-      title, message, customAlert, alertType, btnLabel,
+      title, message, customAlert, alertType, btnLabel, leftBtnLabel,
       onPress, onDismiss, customIcon, _dismissable: dismissable,
       _animationIn: animationIn, _animationOut: animationOut,
     }, () => this.setState({ visible: true }));
@@ -73,7 +66,7 @@ export default class CustomisableAlert extends Component {
     const {
       customIcon, title, message,
       onPress, onDismiss, visible, customAlert,
-      alertType, _dismissable,
+      alertType, _dismissable, leftBtnLabel = 'Cancel',
       _animationIn, _animationOut, btnLabel
     } = this.state;
 
@@ -140,7 +133,7 @@ export default class CustomisableAlert extends Component {
                         ? () => { onDismiss && onDismiss(); this.closeAlert() }
                         : () => { onPress && onPress(); this.closeAlert() }
                     }>
-                    <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{btnLabel || (type === 'warning' ? defaultLeftBtnLabel : 'Ok')}</Text>
+                    <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{btnLabel || (type === 'warning' ? (leftBtnLabel || defaultLeftBtnLabel) : 'Ok')}</Text>
                   </TouchableOpacity>
 
                   {

@@ -99,10 +99,11 @@ When you call `showAlert` you should pass some attributes to customize your aler
 | ------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | title        | `string`                                  | The title of your alert                                                                              |
 | message      | `string`                                  | The message of your alert                                                                            |
-| btnLabel     | `string`                                  | Button label for the one button alert ("error" or "success" alertTypes), default=`'Ok'`              |
+| btnLabel     | `string`                                  | Button label for the one button alert (`'error'` or `success'` alertTypes), default=`'Ok'`           |
+| leftBtnLabel | `string`                                  | Left button label for two buttons alerts (`'warning'` alertTypes), default=`'Cancel'`                |
 | customAlert  | `React.Component`                         | Define a custom alert (this will replace the whole thing!)                                           |
-| customIcon   | `React.Component`                         | Set a custom icon for your alert. If you want no icon in your alert use customIcon:'none'            |
-| alertType    | `"error", "success", "warning", "custom"` | Define the type of the alert                                                                         |
+| customIcon   | `React.Component`                         | Set a custom icon for your alert. If you want no icon in your alert use customIcon:`'none'`          |
+| alertType    | `'error', 'success', 'warning', 'custom'` | Define the type of the alert                                                                         |
 | onPress      | `(): void`                                | Button pressed callback (one button alerts or right button in a two buttons alerts)                  |
 | onDismiss    | `(): void`                                | Close alert button callback (left button in a two buttons alerts)                                    |
 | animationIn  | `Animation`                               | Overhides global animation for an entrance animation                                                 |
@@ -147,27 +148,27 @@ class OtherScreen extends React.Component {
 
 You can set a default style for all your alerts with the following:
 
-| Property             | Type                                 | Description                                                    |
-| -------------------- | ------------------------------------ | -------------------------------------------------------------- |
-| defaultTitle         | `string`                             | Set a default title for all alerts you call, default=`'Title'` |
-| containerStyle       | `ViewStyle`                          | Style for the alert wrapper                                    |
-| titleStyle           | `TextStyle`                          | Style for the title                                            |
-| textStyle            | `TextStyle`                          | Style for the message                                          |
-| btnStyle             | `TouchableOpacityProps`              | Style for all buttons                                          |
-| btnLeftStyle         | `TouchableOpacityProps`              | Style for the left button                                      |
-| btnRightStyle        | `TouchableOpacityProps`              | Style for the right button                                     |
-| btnLabelStyle        | `TextStyle`                          | Style for the label of the buttons                             |
-| btnLeftLabelStyle    | `TextStyle`                          | Style for the left label button                                |
-| btnRightLabelStyle   | `TextStyle`                          | Style for the right label button                               |
-| defaultLeftBtnLabel  | `string`                             | Set a default label for the left button, default=`'Cancel'`    |
-| defaultRightBtnLabel | `string`                             | Set a default label for the right button, default=`'Ok'`       |
-| defaultType          | `error | success | warning | custom` | Set a default type for your alert, default=`'error'`           |
-| animationIn          | `Animation`                          | Set a default entrance animation for your alert                |
-| animationOut         | `Animation`                          | Set a default exit animation for your alert                    |
-| dismissable          | `boolean`                            | If true alert auto dismiss when touch outside, default=`false` |
-| defaultWarningIcon   | `React.Component`                    | Set a default icon for you warning messages                    |
-| defaultSuccessIcon   | `React.Component`                    | Set a default icon for you success messages                    |
-| defaultErrorIcon     | `React.Component`                    | Set a default icon for you error messages                      |
+| Property             | Type                                         | Description                                                    |
+| -------------------- | -------------------------------------------- | -------------------------------------------------------------- |
+| defaultTitle         | `string`                                     | Set a default title for all alerts you call, default=`'Title'` |
+| containerStyle       | `ViewStyle`                                  | Style for the alert wrapper                                    |
+| titleStyle           | `TextStyle`                                  | Style for the title                                            |
+| textStyle            | `TextStyle`                                  | Style for the message                                          |
+| btnStyle             | `TouchableOpacityProps`                      | Style for all buttons                                          |
+| btnLeftStyle         | `TouchableOpacityProps`                      | Style for the left button                                      |
+| btnRightStyle        | `TouchableOpacityProps`                      | Style for the right button                                     |
+| btnLabelStyle        | `TextStyle`                                  | Style for the label of the buttons                             |
+| btnLeftLabelStyle    | `TextStyle`                                  | Style for the left label button                                |
+| btnRightLabelStyle   | `TextStyle`                                  | Style for the right label button                               |
+| defaultLeftBtnLabel  | `string`                                     | Set a default label for the left button, default=`'Cancel'`    |
+| defaultRightBtnLabel | `string`                                     | Set a default label for the right button, default=`'Ok'`       |
+| defaultType          | `'error' | 'success' | 'warning' | 'custom'` | Set a default type for your alert, default=`'error'`           |
+| animationIn          | `Animation`                                  | Set a default entrance animation for your alert                |
+| animationOut         | `Animation`                                  | Set a default exit animation for your alert                    |
+| dismissable          | `boolean`                                    | If true alert auto dismiss when touch outside, default=`false` |
+| defaultWarningIcon   | `React.Component`                            | Set a default icon for you warning messages                    |
+| defaultSuccessIcon   | `React.Component`                            | Set a default icon for you success messages                    |
+| defaultErrorIcon     | `React.Component`                            | Set a default icon for you error messages                      |
 
 ## License
 
