@@ -66,7 +66,7 @@ export default class CustomisableAlert extends Component {
     const {
       customIcon, title, message,
       onPress, onDismiss, visible, customAlert,
-      alertType, _dismissable, leftBtnLabel = 'Cancel',
+      alertType, _dismissable, leftBtnLabel,
       _animationIn, _animationOut, btnLabel
     } = this.state;
 
@@ -133,7 +133,11 @@ export default class CustomisableAlert extends Component {
                         ? () => { onDismiss && onDismiss(); this.closeAlert() }
                         : () => { onPress && onPress(); this.closeAlert() }
                     }>
-                    <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{btnLabel || (type === 'warning' ? (leftBtnLabel || defaultLeftBtnLabel) : 'Ok')}</Text>
+                    <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{
+                      type === 'warning'
+                        ? (leftBtnLabel || defaultLeftBtnLabel || 'Cancel')
+                        : (btnLabel || defaultRightBtnLabel || 'Ok')}
+                    </Text>
                   </TouchableOpacity>
 
                   {
@@ -141,7 +145,7 @@ export default class CustomisableAlert extends Component {
                     <TouchableOpacity
                       onPress={onPress}
                       style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
-                      <Text style={{ ...btnLabelStyle, ...btnRightLabelStyle }}>{defaultRightBtnLabel}</Text>
+                      <Text style={{ ...styles.btnText, ...btnLabelStyle, ...btnRightLabelStyle }}>{btnLabel || defaultRightBtnLabel}</Text>
                     </TouchableOpacity>
                   }
                 </View>
@@ -165,6 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 15,
+    paddingBottom: 5
   },
   img_container: {
     justifyContent: 'center',
@@ -184,12 +189,17 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    flexWrap: 'wrap-reverse'
   },
   btn: {
+    marginBottom: 10,
     minWidth: 120,
     backgroundColor: 'black',
+  },
+  btnText: {
     padding: 10
   },
 });
