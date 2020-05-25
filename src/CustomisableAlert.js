@@ -100,6 +100,12 @@ export default class CustomisableAlert extends Component {
     const ___animationIne = _animationIn || animationIn
     const ___animationOut = _animationOut || animationOut
 
+    const centerBtnStyle = { ...styles.btn, ...btnStyle }
+    const leftBtnStyle = { ...centerBtnStyle, ...btnLeftStyle }
+    const centerOrLeftBtnStyle = type === 'warning'
+      ? leftBtnStyle
+      : centerBtnStyle
+
     return (
       <Modal
         animationIn={___animationIne}
@@ -127,7 +133,7 @@ export default class CustomisableAlert extends Component {
 
                 <View style={styles.actions}>
                   <TouchableOpacity
-                    style={{ ...styles.btn, ...btnStyle, ...btnLeftStyle }}
+                    style={centerOrLeftBtnStyle}
                     onPress={
                       type === 'warning'
                         ? () => { onDismiss && onDismiss(); this.closeAlert() }

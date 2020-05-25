@@ -148,27 +148,27 @@ class OtherScreen extends React.Component {
 
 You can set a default style for all your alerts with the following:
 
-| Property             | Type                                         | Description                                                    |
-| -------------------- | -------------------------------------------- | -------------------------------------------------------------- |
-| defaultTitle         | `string`                                     | Set a default title for all alerts you call, default=`'Title'` |
-| containerStyle       | `ViewStyle`                                  | Style for the alert wrapper                                    |
-| titleStyle           | `TextStyle`                                  | Style for the title                                            |
-| textStyle            | `TextStyle`                                  | Style for the message                                          |
-| btnStyle             | `TouchableOpacityProps`                      | Style for all buttons                                          |
-| btnLeftStyle         | `TouchableOpacityProps`                      | Style for the left button                                      |
-| btnRightStyle        | `TouchableOpacityProps`                      | Style for the right button                                     |
-| btnLabelStyle        | `TextStyle`                                  | Style for the label of the buttons                             |
-| btnLeftLabelStyle    | `TextStyle`                                  | Style for the left label button                                |
-| btnRightLabelStyle   | `TextStyle`                                  | Style for the right label button                               |
-| defaultLeftBtnLabel  | `string`                                     | Set a default label for the left button, default=`'Cancel'`    |
-| defaultRightBtnLabel | `string`                                     | Set a default label for the right button, default=`'Ok'`       |
-| defaultType          | `'error' | 'success' | 'warning' | 'custom'` | Set a default type for your alert, default=`'error'`           |
-| animationIn          | `Animation`                                  | Set a default entrance animation for your alert                |
-| animationOut         | `Animation`                                  | Set a default exit animation for your alert                    |
-| dismissable          | `boolean`                                    | If true alert auto dismiss when touch outside, default=`false` |
-| defaultWarningIcon   | `React.Component`                            | Set a default icon for you warning messages                    |
-| defaultSuccessIcon   | `React.Component`                            | Set a default icon for you success messages                    |
-| defaultErrorIcon     | `React.Component`                            | Set a default icon for you error messages                      |
+| Property             | Type                                         | Description                                                             |
+| -------------------- | -------------------------------------------- | ----------------------------------------------------------------------- |
+| defaultTitle         | `string`                                     | Set a default title for all alerts you call, default=`'Title'`          |
+| containerStyle       | `ViewStyle`                                  | Style for the alert wrapper                                             |
+| titleStyle           | `TextStyle`                                  | Style for the title                                                     |
+| textStyle            | `TextStyle`                                  | Style for the message                                                   |
+| btnStyle             | `TouchableOpacityProps`                      | Style for all buttons or one button alert type                          |
+| btnLeftStyle         | `TouchableOpacityProps`                      | Style for the left button (`'warning'` alertTypes), overrides btnStyle  |
+| btnRightStyle        | `TouchableOpacityProps`                      | Style for the right button (`'warning'` alertTypes), overrides btnStyle |
+| btnLabelStyle        | `TextStyle`                                  | Style for the label of the buttons                                      |
+| btnLeftLabelStyle    | `TextStyle`                                  | Style for the left label button                                         |
+| btnRightLabelStyle   | `TextStyle`                                  | Style for the right label button                                        |
+| defaultLeftBtnLabel  | `string`                                     | Set a default label for the left button, default=`'Cancel'`             |
+| defaultRightBtnLabel | `string`                                     | Set a default label for the right button, default=`'Ok'`                |
+| defaultType          | `'error' | 'success' | 'warning' | 'custom'` | Set a default type for your alert, default=`'error'`                    |
+| animationIn          | `Animation`                                  | Set a default entrance animation for your alert                         |
+| animationOut         | `Animation`                                  | Set a default exit animation for your alert                             |
+| dismissable          | `boolean`                                    | If true alert auto dismiss when touch outside, default=`false`          |
+| defaultWarningIcon   | `React.Component`                            | Set a default icon for you warning messages                             |
+| defaultSuccessIcon   | `React.Component`                            | Set a default icon for you success messages                             |
+| defaultErrorIcon     | `React.Component`                            | Set a default icon for you error messages                               |
 
 ## License
 
