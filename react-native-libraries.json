@@ -1,0 +1,15 @@
+{
+  "githubUrl": "https://github.com/MaiconGilton/react-native-customisable-alert.git",
+  "npmPkg": "react-native-customisable-alert",
+  "examples": [
+    "https://github.com/MaiconGilton/react-native-customisable-alert/blob/master/src/examples.js"
+  ],
+  "images": ["https://i.imgur.com/o9BIqvT.gif"],
+  "ios": false,
+  "android": false,
+  "web": false,
+  "expo": false,
+  "windows": false,
+  "macos": false,
+  "unmaintained": false
+}
