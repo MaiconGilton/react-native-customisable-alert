@@ -139,7 +139,7 @@ export default class CustomisableAlert extends Component {
                                                 ? () => { onDismiss && onDismiss(); this.closeAlert() }
                                                 : () => { onPress && onPress(); this.closeAlert() }
                                         }>
-                                        <Text style={{ ...btnLabelStyle, ...btnLeftLabelStyle }}>{
+                                        <Text style={{ ...styles.btnText, ...btnLabelStyle, ...btnLeftLabelStyle }}>{
                                             type === 'warning'
                                                 ? (leftBtnLabel || defaultLeftBtnLabel || 'Cancel')
                                                 : (btnLabel || defaultRightBtnLabel || 'Ok')}
