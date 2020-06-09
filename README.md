@@ -45,19 +45,19 @@ import { View } from "react-native";
 import CustomisableAlert from "react-native-customisable-alert";
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        ... all your stuff
-        <CustomisableAlert
-          titleStyle={{
-            fontSize: 18,
-            fontWeight: "bold"
-          }}
-        />
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                ... all your stuff
+                <CustomisableAlert
+                    titleStyle={{
+                        fontSize: 18,
+                        fontWeight: "bold"
+                    }}
+                />
+            </View>
+        );
+    }
 }
 ```
 
@@ -116,31 +116,37 @@ All alerts are set to close automatically when any button pressed, but for custo
 import React from "react";
 import { View, Button } from "react-native";
 
-import { showAlert } from "react-native-customisable-alert";
+import { showAlert, closeAlert } from "react-native-customisable-alert";
 
 class OtherScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Button
-          onPress={() => {
-            showAlert({
-              customAlert: (
-                <View>
-                  <Text>Could you tell us your name?</Text>
-                  <TextInput />
-                  <View>
-                    <Button title="Cancel" onPress={() => closeAlert()} />
-                    <Button title="Send" onPress={() => {}} />
-                  </View>
-                </View>
-              )
-            });
-          }}
-        />
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                <Button
+                    onPress={() => {
+                        showAlert({
+                            customAlert: (
+                                <View>
+                                    <Text>Could you tell us your name?</Text>
+                                    <TextInput />
+                                    <View>
+                                        <Button
+                                            title="Cancel"
+                                            onPress={() => closeAlert()}
+                                        />
+                                        <Button
+                                            title="Send"
+                                            onPress={() => {}}
+                                        />
+                                    </View>
+                                </View>
+                            )
+                        });
+                    }}
+                />
+            </View>
+        );
+    }
 }
 ```
 
