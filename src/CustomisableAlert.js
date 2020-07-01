@@ -26,7 +26,7 @@ export default class CustomisableAlert extends Component {
             leftBtnLabel: null, message: null, customAlert: null,
             alertType: null, onPress: null, onDismiss: null,
             customIcon: null, _dismissable: false, _animationIn: null,
-            _animationOut: null, backdropOpacity: null, backdropColor: null
+            _animationOut: null, modalProps: {}
         };
     }
 
@@ -39,13 +39,13 @@ export default class CustomisableAlert extends Component {
     }
 
     showAlert = ({
-        customIcon, title, message, customAlert, backdropOpacity,
-        alertType, onPress, dismissable, onDismiss, backdropColor,
+        customIcon, title, message, customAlert,
+        alertType, onPress, dismissable, onDismiss, modalProps,
         animationIn, animationOut, btnLabel, leftBtnLabel } = {}) => {
         this.setState({
             title, message, customAlert, alertType, btnLabel, leftBtnLabel,
-            onPress, onDismiss, customIcon, _dismissable: dismissable, backdropColor,
-            _animationIn: animationIn, _animationOut: animationOut, backdropOpacity,
+            onPress, onDismiss, customIcon, _dismissable: dismissable,
+            _animationIn: animationIn, _animationOut: animationOut, modalProps,
         }, () => this.setState({ visible: true }));
     }
 
@@ -60,12 +60,12 @@ export default class CustomisableAlert extends Component {
             btnStyle, btnLeftStyle, btnRightStyle,
             defaultLeftBtnLabel = 'Cancel', defaultRightBtnLabel = 'Ok',
             btnLabelStyle, btnLeftLabelStyle, defaultWarningIcon, defaultSuccessIcon,
-            defaultErrorIcon, btnRightLabelStyle, dismissable = false
+            defaultErrorIcon, btnRightLabelStyle, dismissable = false, modalProps = {}
         } = this.props;
 
         const {
-            customIcon, title, message, backdropOpacity,
-            onPress, onDismiss, visible, customAlert, backdropColor,
+            customIcon, title, message,
+            onPress, onDismiss, visible, customAlert,
             alertType, _dismissable, leftBtnLabel,
             _animationIn, _animationOut, btnLabel
         } = this.state;
@@ -108,6 +108,7 @@ export default class CustomisableAlert extends Component {
 
         return (
             <Modal
+                {...{ ...modalProps, ...this.state.modalProps }}
                 animationIn={___animationIne}
                 animationOut={___animationOut}
                 isVisible={visible}
@@ -115,8 +116,6 @@ export default class CustomisableAlert extends Component {
                 supportedOrientations={['landscape', 'portrait']}
                 deviceHeight={10000}
                 style={{ margin: 0 }}
-                backdropOpacity={backdropOpacity || 0.7}
-                backdropColor={backdropColor || 'black'}
                 onBackdropPress={() => ___dismissable ? this.closeAlert() : {}}
             >
                 <View style={{ ...styles.container, ...containerStyle }}>
@@ -161,7 +160,7 @@ export default class CustomisableAlert extends Component {
                     }
 
                 </View>
-            </Modal>
+            </Modal >
         );
     }
 }
