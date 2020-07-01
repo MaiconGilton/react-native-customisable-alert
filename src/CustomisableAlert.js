@@ -26,7 +26,7 @@ export default class CustomisableAlert extends Component {
             leftBtnLabel: null, message: null, customAlert: null,
             alertType: null, onPress: null, onDismiss: null,
             customIcon: null, _dismissable: false, _animationIn: null,
-            _animationOut: null,
+            _animationOut: null, backdropOpacity: null, backdropColor: null
         };
     }
 
@@ -39,13 +39,13 @@ export default class CustomisableAlert extends Component {
     }
 
     showAlert = ({
-        customIcon, title, message, customAlert,
-        alertType, onPress, dismissable, onDismiss,
+        customIcon, title, message, customAlert, backdropOpacity,
+        alertType, onPress, dismissable, onDismiss, backdropColor,
         animationIn, animationOut, btnLabel, leftBtnLabel } = {}) => {
         this.setState({
             title, message, customAlert, alertType, btnLabel, leftBtnLabel,
-            onPress, onDismiss, customIcon, _dismissable: dismissable,
-            _animationIn: animationIn, _animationOut: animationOut,
+            onPress, onDismiss, customIcon, _dismissable: dismissable, backdropColor,
+            _animationIn: animationIn, _animationOut: animationOut, backdropOpacity,
         }, () => this.setState({ visible: true }));
     }
 
@@ -64,8 +64,8 @@ export default class CustomisableAlert extends Component {
         } = this.props;
 
         const {
-            customIcon, title, message,
-            onPress, onDismiss, visible, customAlert,
+            customIcon, title, message, backdropOpacity,
+            onPress, onDismiss, visible, customAlert, backdropColor,
             alertType, _dismissable, leftBtnLabel,
             _animationIn, _animationOut, btnLabel
         } = this.state;
@@ -115,6 +115,8 @@ export default class CustomisableAlert extends Component {
                 supportedOrientations={['landscape', 'portrait']}
                 deviceHeight={10000}
                 style={{ margin: 0 }}
+                backdropOpacity={backdropOpacity || 0.7}
+                backdropColor={backdropColor || 'black'}
                 onBackdropPress={() => ___dismissable ? this.closeAlert() : {}}
             >
                 <View style={{ ...styles.container, ...containerStyle }}>

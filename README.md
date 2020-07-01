@@ -109,6 +109,7 @@ When you call `showAlert` you should pass some attributes to customize your aler
 | animationIn  | `Animation`                               | Overhides global animation for an entrance animation                                                 |
 | animationOut | `Animation`                               | Overhides global animation for an exit animation                                                     |
 | dismissable  | `boolean`                                 | Overhides global dismissable behavior. If true it closes the alert when touch outside, default false |
+| modalProps   | `ModalProps`                              | Overhides global modal props from react-native-modal                                                 |
 
 All alerts are set to close automatically when any button pressed, but for custom and warning alertTypes you need close it programatically as the example below:
 
@@ -175,6 +176,7 @@ You can set a default style for all your alerts with the following:
 | defaultWarningIcon   | `React.Component`                            | Set a default icon for you warning messages                             |
 | defaultSuccessIcon   | `React.Component`                            | Set a default icon for you success messages                             |
 | defaultErrorIcon     | `React.Component`                            | Set a default icon for you error messages                               |
+| modalProps           | `ModalProps`                                 | Set a global modal props from react-native-modal                        |
 
 ## License
 
