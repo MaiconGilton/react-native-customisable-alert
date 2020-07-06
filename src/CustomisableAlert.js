@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, Image, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Image, Text, View, Dimensions } from "react-native";
 import AlertManager from "./CustomisableAlertManager";
 import Modal from 'react-native-modal';
 
@@ -26,16 +26,25 @@ export default class CustomisableAlert extends Component {
             leftBtnLabel: null, message: null, customAlert: null,
             alertType: null, onPress: null, onDismiss: null,
             customIcon: null, _dismissable: false, _animationIn: null,
-            _animationOut: null, modalProps: {}
+            _animationOut: null, modalProps: {},
+            screenHeight: Dimensions.get('screen').height,
+            screenWidth: Dimensions.get('screen').width,
         };
     }
 
     componentDidMount() {
         AlertManager.register(this);
+        Dimensions.addEventListener('change', ({ screen }) => {
+            this.setState({
+                screenHeight: screen.height,
+                screenWidth: screen.width
+            })
+        })
     }
 
     componentWillUnmount() {
         AlertManager.unregister(this);
+        Dimensions.removeEventListener('change')
     }
 
     showAlert = ({
@@ -67,7 +76,7 @@ export default class CustomisableAlert extends Component {
             customIcon, title, message,
             onPress, onDismiss, visible, customAlert,
             alertType, _dismissable, leftBtnLabel,
-            _animationIn, _animationOut, btnLabel
+            _animationIn, _animationOut, btnLabel, screenHeight, screenWidth
         } = this.state;
 
         function getImage() {
@@ -114,7 +123,8 @@ export default class CustomisableAlert extends Component {
                 isVisible={visible}
                 useNativeDriver
                 supportedOrientations={['landscape', 'portrait']}
-                deviceHeight={10000}
+                deviceHeight={screenHeight}
+                deviceWidth={screenWidth}
                 style={{ margin: 0 }}
                 onBackdropPress={() => ___dismissable ? this.closeAlert() : {}}
             >
@@ -160,7 +170,7 @@ export default class CustomisableAlert extends Component {
                     }
 
                 </View>
-            </Modal >
+            </Modal>
         );
     }
 }
