@@ -23,6 +23,9 @@
     "files": [
         "src"
     ],
+    "scripts": {
+        "release": "standard-version"
+    },
     "peerDependencies": {
         "react": "*",
         "react-native": "*"
