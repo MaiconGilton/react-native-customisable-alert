@@ -1,11 +1,6 @@
 import * as React from "react";
 import {
-    Animated,
-    ImageProps,
-    ImageStyle,
-    StyleProp,
     TextStyle,
-    TranslateYTransform,
     ViewStyle,
     TouchableOpacityProps
 } from "react-native";
@@ -20,11 +15,11 @@ export interface CustomisableAlertOptions {
      *
      * If you want no icon in your alert use customIcon:`'none'`
      */
-    customIcon?: React.Component;
+    customIcon?: React.ReactNode;
     /**
      * The title of your alert
      */
-    title: string;
+    title?: string;
     /**
      * The message of your alert
      */
@@ -86,7 +81,7 @@ export interface CustomisableAlertProps {
     /**
      * Set a default title for all alerts you call
      */
-    defaultTitle: string;
+    defaultTitle?: string;
     /**
      * Style for the alert wrapper
      */
@@ -196,4 +191,4 @@ export function closeAlert(): void;
 
 export default class CustomisableAlert extends React.Component<
     CustomisableAlertProps
-> {}
+> { }
