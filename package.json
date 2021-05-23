@@ -1,6 +1,6 @@
 {
     "name": "react-native-customisable-alert",
-    "version": "0.1.15",
+    "version": "0.1.14",
     "description": "React Native customisable alert utility",
     "main": "src/index.js",
     "types": "src/index.d.ts",
