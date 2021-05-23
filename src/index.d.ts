@@ -41,7 +41,7 @@ export interface CustomisableAlertOptions {
     /**
      * Define a custom alert (this replace the whole thing!)
      */
-    customAlert?: React.Component;
+    customAlert?: React.ReactNode;
     /**
      * Define the type of the alert
      */
@@ -147,15 +147,15 @@ export interface CustomisableAlertProps {
     /**
      * Set a default icon for you warning messages
      */
-    defaultWarningIcon?: React.Component;
+    defaultWarningIcon?: React.ReactNode;
     /**
      * Set a default icon for you success messages
      */
-    defaultSuccessIcon?: React.Component;
+    defaultSuccessIcon?: React.ReactNode;
     /**
      * Set a default icon for you error messages
      */
-    defaultErrorIcon?: React.Component;
+    defaultErrorIcon?: React.ReactNode;
     /**
      * Set a global modal props from react-native-modal
      *
