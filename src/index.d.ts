@@ -83,9 +83,9 @@ export interface CustomisableAlertProps {
      */
     defaultTitle?: string;
     /**
-     * Style for the alert wrapper
+     * Style for the alert backdrop
      */
-    containerStyle?: ViewStyle;
+    backdropStyle?: ViewStyle;
     /**
      * Style for the message of your alert
      */
