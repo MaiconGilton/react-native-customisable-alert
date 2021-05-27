@@ -159,6 +159,7 @@ You can set a default style for all your alerts with the following:
 | -------------------- | -------------------------------------------- | ----------------------------------------------------------------------- |
 | defaultTitle         | `string`                                     | Set a default title for all alerts you call, default=`'Title'`          |
 | backdropStyle        | `ViewStyle`                                  | Style for the alert backdrop                                            |
+| alertContainerStyle  | `ViewStyle`                                  | Style for the alert container                                           |
 | titleStyle           | `TextStyle`                                  | Style for the title                                                     |
 | textStyle            | `TextStyle`                                  | Style for the message                                                   |
 | btnStyle             | `TouchableOpacityProps`                      | Style for all buttons or one button alert type                          |

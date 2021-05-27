@@ -87,6 +87,10 @@ export interface CustomisableAlertProps {
      */
     backdropStyle?: ViewStyle;
     /**
+     * Style for the alert container
+     */
+    alertContainerStyle?: ViewStyle;
+    /**
      * Style for the message of your alert
      */
     textStyle?: TextStyle;

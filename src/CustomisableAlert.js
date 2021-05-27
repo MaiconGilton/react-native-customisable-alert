@@ -64,7 +64,7 @@ export default class CustomisableAlert extends Component {
 
     render() {
         const {
-            backdropStyle, defaultType = 'error', animationIn,
+            backdropStyle, alertContainerStyle, defaultType = 'error', animationIn,
             animationOut, textStyle, titleStyle, defaultTitle = 'Title',
             btnStyle, btnLeftStyle, btnRightStyle,
             defaultLeftBtnLabel = 'Cancel', defaultRightBtnLabel = 'Ok',
@@ -133,7 +133,7 @@ export default class CustomisableAlert extends Component {
                     {
                         type === 'custom' ? (customAlert || <Text onPress={this.closeAlert}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
 
-                            <View style={styles.content}>
+                            <View style={{ ...styles.content, ...alertContainerStyle }}>
                                 <View style={styles.img_container}>
                                     {getImage()}
                                 </View>
