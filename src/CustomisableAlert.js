@@ -125,11 +125,10 @@ export default class CustomisableAlert extends Component {
                 supportedOrientations={['landscape', 'portrait']}
                 deviceHeight={screenHeight}
                 deviceWidth={screenWidth}
-                style={{ margin: 0 }}
+                style={styles.container}
                 onBackdropPress={() => ___dismissable ? this.closeAlert() : {}}
             >
-                <View style={{ ...styles.container, ...backdropStyle }}>
-
+                <View style={backdropStyle}>
                     {
                         type === 'custom' ? (customAlert || <Text onPress={this.closeAlert}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
 
@@ -180,6 +179,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        margin: 0,
     },
     content: {
         width: '90%',
