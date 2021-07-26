@@ -115,6 +115,7 @@ export default class CustomisableAlert extends Component {
             ? leftBtnStyle
             : centerBtnStyle
 
+
         return (
             <Modal
                 {...{ ...modalProps, ...this.state.modalProps }}
@@ -125,49 +126,47 @@ export default class CustomisableAlert extends Component {
                 supportedOrientations={['landscape', 'portrait']}
                 deviceHeight={screenHeight}
                 deviceWidth={screenWidth}
-                style={styles.container}
+                style={{ margin: 0 }}
                 onBackdropPress={() => ___dismissable ? this.closeAlert() : {}}
             >
-                <View style={backdropStyle}>
-                    {
-                        type === 'custom' ? (customAlert || <Text onPress={this.closeAlert}>Custom alertTypes needs a customAlert prop! Click here to close</Text>) :
-
-                            <View style={{ ...styles.content, ...alertContainerStyle }}>
-                                <View style={styles.img_container}>
-                                    {getImage()}
-                                </View>
-
-                                <Text style={{ ...styles.title, ...titleStyle }}>{___title}</Text>
-
-                                {!!message && <Text style={{ ...styles.text, ...textStyle }}>{message}</Text>}
-
-                                <View style={styles.actions}>
-                                    <TouchableOpacity
-                                        style={centerOrLeftBtnStyle}
-                                        onPress={
-                                            type === 'warning'
-                                                ? () => { onDismiss && onDismiss(); this.closeAlert() }
-                                                : () => { onPress && onPress(); this.closeAlert() }
-                                        }>
-                                        <Text style={{ ...styles.btnText, ...btnLabelStyle, ...btnLeftLabelStyle }}>{
-                                            type === 'warning'
-                                                ? (leftBtnLabel || defaultLeftBtnLabel || 'Cancel')
-                                                : (btnLabel || defaultRightBtnLabel || 'Ok')}
-                                        </Text>
-                                    </TouchableOpacity>
-
-                                    {
-                                        type === 'warning' &&
-                                        <TouchableOpacity
-                                            onPress={onPress}
-                                            style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
-                                            <Text style={{ ...styles.btnText, ...btnLabelStyle, ...btnRightLabelStyle }}>{btnLabel || defaultRightBtnLabel}</Text>
-                                        </TouchableOpacity>
-                                    }
-                                </View>
+                <View style={{ ...styles.container, ...backdropStyle }}>
+                    {type === 'custom'
+                        ? (customAlert || <Text onPress={this.closeAlert}>Custom alertTypes needs a customAlert prop! Click here to close</Text>)
+                        : <View style={{ ...styles.content, ...alertContainerStyle }}>
+                            <View style={styles.img_container}>
+                                {getImage()}
                             </View>
-                    }
 
+                            <Text style={{ ...styles.title, ...titleStyle }}>{___title}</Text>
+
+                            {!!message && <Text style={{ ...styles.text, ...textStyle }}>{message}</Text>}
+
+                            <View style={styles.actions}>
+                                <TouchableOpacity
+                                    style={centerOrLeftBtnStyle}
+                                    onPress={
+                                        type === 'warning'
+                                            ? () => { onDismiss && onDismiss(); this.closeAlert() }
+                                            : () => { onPress && onPress(); this.closeAlert() }
+                                    }>
+                                    <Text style={{ ...styles.btnText, ...btnLabelStyle, ...btnLeftLabelStyle }}>{
+                                        type === 'warning'
+                                            ? (leftBtnLabel || defaultLeftBtnLabel || 'Cancel')
+                                            : (btnLabel || defaultRightBtnLabel || 'Ok')}
+                                    </Text>
+                                </TouchableOpacity>
+
+                                {
+                                    type === 'warning' &&
+                                    <TouchableOpacity
+                                        onPress={onPress}
+                                        style={{ ...styles.btn, ...btnStyle, ...btnRightStyle }}>
+                                        <Text style={{ ...styles.btnText, ...btnLabelStyle, ...btnRightLabelStyle }}>{btnLabel || defaultRightBtnLabel}</Text>
+                                    </TouchableOpacity>
+                                }
+                            </View>
+                        </View>
+                    }
                 </View>
             </Modal>
         );
@@ -176,10 +175,8 @@ export default class CustomisableAlert extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 0,
     },
     content: {
         width: '90%',
