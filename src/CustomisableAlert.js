@@ -34,7 +34,7 @@ export default class CustomisableAlert extends Component {
 
     componentDidMount() {
         AlertManager.register(this);
-        Dimensions.addEventListener('change', ({ screen }) => {
+        this.dimensionsSubscription = Dimensions.addEventListener('change', ({ screen }) => {
             this.setState({
                 screenHeight: screen.height,
                 screenWidth: screen.width
@@ -44,7 +44,7 @@ export default class CustomisableAlert extends Component {
 
     componentWillUnmount() {
         AlertManager.unregister(this);
-        Dimensions.removeEventListener('change')
+        this.dimensionsSubscription?.remove();
     }
 
     showAlert = ({
